@@ -1,0 +1,33 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<form method="POST" action=""> 
+    {{ form.hidden_tag() }}     
+    
+    <h2>Update Post</h2>
+
+    {{ form.title.label }}
+    {% if form.title.errors %}
+    {{ form.title }}<br>
+    {% for error in form.title.errors %}
+    <span>{{ error }}</span><br>
+    {% endfor %}
+    {% else %}
+    {{ form.title }}<br>
+    {% endif %}
+
+    {{ form.content.label }}
+    {% if form.content.errors %}
+    {{ form.content }}<br>
+    {% for error in form.content.errors %}
+    <span>{{ error }}</span><br>
+    {% endfor %}
+    {% else %}
+    {{ form.content }}<br>
+    {% endif %}
+
+
+    {{ form.submit }}<br>
+</form>
+{% endblock %}

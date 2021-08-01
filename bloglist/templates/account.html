@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="content-section">
+    <div class="media">
+        
+        <div class="media-body">
+            <h2 class="account-heading">{{ current_user.username }}</h2>
+            <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+    </div>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        {{ form.username.label }}
+
+        {% if form.username.errors %}
+        {{ form.username }}<br>
+        {% for error in form.username.errors %}
+        <span>{{ error }}</span><br>
+        {% endfor %}
+        {% else %}
+        {{ form.username }}<br>
+        {% endif %}
+        
+
+        {{ form.email.label }}
+        {% if form.email.errors %}
+        {{ form.email }}<br>
+        {% for error in form.email.errors %}
+        <span>{{ error }}</span><br>
+        {% endfor %}
+        {% else %}
+        {{ form.email }}<br>
+        {% endif %}        
+
+        {{ form.submit }}<br>
+    </form>
+</div>
+{% endblock %}
